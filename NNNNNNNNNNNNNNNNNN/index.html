@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="container">
+
+    <!-- TELA INICIAL -->
+    <section id="hub">
+        <h2>Jogos</h2>
+
+        <div class="grid">
+            <a href="#game1" class="card">
+                <div class="thumb"></div>
+                <span>Jogo 1</span>
+            </a>
+
+            <a href="#game2" class="card">
+                <div class="thumb"></div>
+                <span>Jogo 2</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- DETALHE DO JOGO -->
+    <section id="game1" class="game-detail">
+
+        <a href="#hub" class="back">← Voltar</a>
+
+        <!-- saga -->
+        <input type="radio" name="saga1" id="g1" checked>
+        <input type="radio" name="saga1" id="g2">
+        <input type="radio" name="saga1" id="g3">
+
+        <div class="game-content">
+
+            <div class="game-image">
+                <label for="g1"><img src="https://via.placeholder.com/300x400"></label>
+                <label for="g2"><img src="https://via.placeholder.com/300x400"></label>
+                <label for="g3"><img src="https://via.placeholder.com/300x400"></label>
+            </div>
+
+            <div class="game-info">
+                <h3>Saga Principal</h3>
+
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Curabitur nec lacus vel justo luctus placerat.
+                </p>
+
+                <div class="buttons">
+                    <a href="#" class="btn">Acessar Jogo</a>
+                    <a href="#" class="btn">Personagens</a>
+                    <a href="#" class="btn">Equipe</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnails">
+            <label for="g1"><img src="https://via.placeholder.com/80x100"></label>
+            <label for="g2"><img src="https://via.placeholder.com/80x100"></label>
+            <label for="g3"><img src="https://via.placeholder.com/80x100"></label>
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

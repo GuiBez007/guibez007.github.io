@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #0b0b0b;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #eaeaea;
+    border-radius: 8px;
+}
+
+/* HUB */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.thumb {
+    aspect-ratio: 1/1;
+    border: 2px solid #333;
+    margin-bottom: 6px;
+}
+
+/* DETALHE */
+.game-detail {
+    display: none;
+    margin-top: 30px;
+}
+
+/* MOSTRA APENAS QUANDO CLICA */
+.game-detail:target {
+    display: block;
+}
+
+/* esconder hub quando detalhe aberto */
+.game-detail:target ~ #hub {
+    display: none;
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+.game input {
+    display: none;
+}
+
+.game-content {
+    display: flex;
+    gap: 30px;
+}
+
+.game-image {
+    width: 300px;
+}
+
+.game-image img {
+    width: 100%;
+    display: none;
+    transition: transform .3s;
+}
+
+.game-image img:hover {
+    transform: scaleY(1.06) scaleX(1.02);
+}
+
+/* seleção saga */
+#g1:checked ~ .game-content .game-image label:nth-child(1) img,
+#g2:checked ~ .game-content .game-image label:nth-child(2) img,
+#g3:checked ~ .game-content .game-image label:nth-child(3) img {
+    display: block;
+}
+
+.game-info {
+    flex: 1;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    background: #222;
+    color: #fff;
+    padding: 10px 14px;
+    text-decoration: none;
+}
+
+.thumbnails {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.thumbnails img {
+    cursor: pointer;
+    opacity: .6;
+}
+
+#g1:checked ~ .thumbnails label:nth-child(1) img,
+#g2:checked ~ .thumbnails label:nth-child(2) img,
+#g3:checked ~ .thumbnails label:nth-child(3) img {
+    opacity: 1;
+}
