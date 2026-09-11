@@ -1,17 +1,10 @@
-// Global style import
-
-
-// Pages imports
-import T01_Home from "./pages/T01_Home.jsx"
-
-
-// React imports
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <T01_Home />
+    <App />
   </StrictMode>,
-)
+);
