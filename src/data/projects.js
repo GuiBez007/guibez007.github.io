@@ -2,7 +2,7 @@ export const projectsData = [
   {
     id: "countbus",
     title: "CountBus",
-    badge: "Colaborativo",
+    badge: "Equipe",
     icon: "🚌",
     description: "Sistema de tecnologia voltado ao monitoramento da ocupação de ônibus, utilizando sensores, GPS, conectividade e uma plataforma para visualização dos dados.",
     techs: ["ESP32", "GPS", "Sensores", "Spring Boot", "MariaDB", "React"],
@@ -12,7 +12,7 @@ export const projectsData = [
   {
     id: "harmonic-group",
     title: "Harmonic Group",
-    badge: "Colaborativo",
+    badge: "Equipe",
     icon: "🎵",
     description: "Sistema de gerenciamento desenvolvido para serviços musicais, permitindo organizar e gerenciar informações relacionadas aos serviços oferecidos.",
     techs: ["JavaScript", "Web", "Gerenciamento de serviços"],
