@@ -16,8 +16,8 @@ Landing page e portfólio de apresentação pessoal e profissional de **Guilherm
 Minha trajetória na tecnologia começou em 2023, ao iniciar a faculdade (FATEC) após um período trabalhando com atividades braçais. Desde então, venho construindo minha formação através da prática constante e do desenvolvimento de projetos próprios.
 
 ### Destaques & Vivências:
-- **Formação & Projetos Acadêmicos**: 3 anos de graduação com participação em eventos e competições como **InterFATECs**, **RoboCode** e **EXPOTECH**.
-- **Inglês**: Realização do **TOEIC em dois anos**, acompanhando minha constante evolução no idioma.
+- **Formação & Projetos Acadêmicos**: 3 anos de graduação com participação em eventos e competições como a **InterFatecs** (competição de programação), a **RoboCode** (competição de robótica) e a **EXPOCIEE** (evento de empregabilidade, capacitação e conexão). 
+- **Inglês**: Realização do **TOEIC em dois anos** (exame internacional de proficiência em inglês), acompanhando minha constante evolução no idioma.
 - **CountBus**: Projeto prático que evoluiu de um protótipo acadêmico para uma solução integrando hardware, sensores, GPS, conectividade, backend, banco de dados e dashboard web.
 - **The Revolt Saga (TRS)**: Projeto autoral focado na escrita de livro, roteiro e worldbuilding detalhado, servindo também como base conceitual para um futuro projeto de jogo.
 - **Formação em Inteligência Artificial**: Cursos de IA no **SENAI**, explorando a aplicação prática de modelos e sua integração ao desenvolvimento de software.
@@ -29,7 +29,7 @@ Minha trajetória na tecnologia começou em 2023, ao iniciar a faculdade (FATEC)
 
 A aplicação organiza minhas principais frentes de atuação de forma clara e direta:
 
-- **Desenvolvimento Web**: React, Vite, JavaScript (ES6+), HTML5, CSS3.
+- **Desenvolvimento Web**: React, JavaScript, HTML5, CSS3.
 - **Backend & Sistemas**: Node.js, Spring Boot, APIs REST, Bancos de Dados (MariaDB).
 - **Inteligência Artificial**: Cursos de IA no SENAI, aplicações de IA e integração com software.
 - **Hardware & IoT**: Sensores, GPS, conectividade e integração hardware/software.

@@ -42,9 +42,9 @@ function About() {
             <div className="highlight-pill-box">
               <span className="pill-title">Competições & Cursos</span>
               <div className="pill-tags">
-                <span className="badge-chip">InterFATECs</span>
+                <span className="badge-chip">InterFatecs</span>
                 <span className="badge-chip">RoboCode</span>
-                <span className="badge-chip">EXPOTECH</span>
+                <span className="badge-chip">ExpoCIEE</span>
                 <span className="badge-chip">TOEIC em 2 anos</span>
                 <span className="badge-chip highlight-cyan">IA no SENAI</span>
                 <span className="badge-chip">TG</span>

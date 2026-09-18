@@ -127,7 +127,7 @@ function FeaturedProject() {
           color: var(--text-muted);
           line-height: 1.65;
           margin-bottom: 2rem;
-          max-width: 840px;
+          max-width: 100%;
         }
 
         .project-pillars {

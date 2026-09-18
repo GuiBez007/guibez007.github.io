@@ -5,6 +5,7 @@ export const profileData = {
   socials: {
     linkedin: "https://www.linkedin.com/in/guilherme-b-b3905229b/",
     github: "https://github.com/GuiBez007",
-    email: "guilhermebezerradejesus@gmail.com"
+    email: "guilhermebezerradejesus@gmail.com",
+    whatsapp: "https://wa.me/5511917652794"
   }
 };

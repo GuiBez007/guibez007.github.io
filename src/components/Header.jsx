@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { personalData } from '../data/content';
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,6 +16,7 @@ function Header() {
     { name: 'Contato', href: '#hero' },
     { name: 'Sobre', href: '#sobre' },
     { name: 'Áreas de Atuação', href: '#areas' },
+    { name: 'Projetos', href: '#projetos' },
     { name: 'Projeto Principal', href: '#projeto' }
   ];
 
@@ -35,22 +35,6 @@ function Header() {
               {link.name}
             </a>
           ))}
-          <a
-            href={personalData.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary btn-sm"
-          >
-            GitHub ↗
-          </a>
-          <a
-            href={personalData.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary btn-sm"
-          >
-            LinkedIn ↗
-          </a>
         </nav>
 
         {/* Mobile Toggle Button */}
@@ -75,24 +59,6 @@ function Header() {
                 {link.name}
               </a>
             ))}
-            <a
-              href={personalData.socials.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-secondary"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              GitHub ↗
-            </a>
-            <a
-              href={personalData.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              LinkedIn ↗
-            </a>
           </div>
         )}
       </div>

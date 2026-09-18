@@ -6,7 +6,7 @@ export const focusAreasData = [
     title: "Desenvolvimento Web",
     badge: "Front-end",
     description: "Criação de aplicações e interfaces web dinâmicas e responsivas.",
-    techs: ["React", "Vite", "JavaScript", "HTML5", "CSS3"]
+    techs: ["React", "JavaScript", "HTML5", "CSS3"]
   },
   {
     id: "backend",

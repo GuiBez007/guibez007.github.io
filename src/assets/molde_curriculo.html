@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Guilherme Bezerra de Jesus</title>
+    <style>
+        :root {
+            --primary-color: #0f172a; /* Dark blue/slate */
+            --secondary-color: #3b82f6; /* Accent blue */
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-color: #ffffff;
+            --border-color: #e2e8f0;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: #f8fafc;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-color);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            /* border-bottom: 2px solid var(--border-color); */
+            padding-bottom: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-image-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-align: center;
+            border: 3px solid var(--border-color);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .profile-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header-content {
+            flex-grow: 1;
+        }
+
+        .name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .role {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .contact-item a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .summary {
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        /* Grid Layouts */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category h4 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #f1f5f9;
+            color: var(--text-main);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Experience / Projects */
+        .item {
+            margin-bottom: 1.5rem;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .item-subtitle {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .item-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+        }
+
+        .item-tech {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .resume-container {
+                box-shadow: none;
+                padding: 0;
+                max-width: 100%;
+            }
+            .skill-tag {
+                border-color: #cbd5e1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="profile-image-placeholder">
+                <img src="ftcurriculo.png" alt="Foto Guilherme Bezerra de Jesus">
+            </div>
+            
+            <div class="header-content">
+                <h1 class="name">Guilherme Bezerra de Jesus</h1>
+                <h2 class="role">Desenvolvedor de Software | Front-end • Back-end • IA</h2>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>E-mail:</strong> <a href="mailto:guilhermebezerradejesus@gmail.com">guilhermebezerradejesus@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>WhatsApp:</strong> <a href="https://wa.me/5511917652794" target="_blank">(11) 91765-2794</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/guilherme-b-b3905229b/" target="_blank">linkedin.com/in/guilherme-b</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>GitHub:</strong> <a href="https://github.com/GuiBez007" target="_blank">github.com/GuiBez007</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Localidade:</strong> <span>Santana de Parnaíba, São Paulo - SP</span> <!-- Substitua pela sua cidade -->
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="section">
+            <h3 class="section-title">Resumo Profissional</h3>
+            <p class="summary">
+                Desenvolvedor de software com experiência prática no desenvolvimento de aplicações web, APIs e integrações com Inteligência Artificial. Experiência com React, JavaScript, Node.js, Spring Boot e bancos relacionais, adquirida por meio de projetos acadêmicos, colaborativos e autorais. 
+            </p>
+            <br>
+            <p>
+                Busco oportunidade em desenvolvimento de software para atuar com front-end, back-end ou IA e continuar evoluindo tecnicamente.
+            </p>
+        </section>
+
+        <!-- Skills -->
+        <section class="section">
+            <h3 class="section-title">Habilidades e Tecnologias</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Front-end</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Back-end & Dados</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">APIs REST</span>
+                        <span class="skill-tag">Bancos Relacionais</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Inteligência Artificial</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">IA Generativa</span>
+                        <span class="skill-tag">Integração de APIs</span>
+                        <span class="skill-tag">Automação</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>IoT & Hardware</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">ESP32</span>
+                        <span class="skill-tag">Sensores / GPS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+            <h3 class="section-title">Formação Acadêmica e Cursos</h3>
+            
+            <div class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Graduação em Análise e Desenvolvimento de Sistemas</h4>
+                    <span class="item-date">Concluído</span>
+                </div>
+                <div class="item-subtitle">Fatec Santana de Parnaíba</div> <!-- Ajuste a unidade e o curso se necessário -->
+                <p class="item-desc">
+                    Durante o curso participei de maratonas e competições, e da criação do Trabalho de Graduação (TCC), Harmonic Group, que consiste em um sistema completo para gerenciamento de serviços e eventos musicais. Experiência prática em trabalhos de equipe e resolução de problemas.
+                </p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Certificação de Inglês - TOEIC</h4>
+                    <span class="item-date"></span>
+                </div>
+                <div class="item-subtitle">640 pontos | Nível B1</div>
+                <p class="item-desc">
+                    Exame internacional de proficiência em inglês, comprovando capacidade de leitura e compreensão oral em ambiente profissional.
+                </p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Cursos da Cisco</h4>
+                    <span class="item-date"></span>
+                </div>
+                <div class="item-subtitle">Cisco Networking Academy</div>
+                <p class="item-desc">
+                    Cursos com foco em tecnologias e ferramentas relevantes para a área de tecnologia, tais como Programação em Python, IT Essentials, Sistemas Operacionais Básico e Segurança de Endpoint.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Experience / Projects -->
+        <section class="section">
+            <h3 class="section-title">Projetos Principais e Experiência Prática</h3>
+            
+            <div class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Harmonic Group</h4>
+                    <span class="item-date">Acadêmico / Equipe</span>
+                </div>
+                <p class="item-desc">
+                    Sistema web para gerenciamento de serviços e eventos musicais, desenvolvido em React, Spring Boot e MariaDB. Implementação de funcionalidades para cadastro, organização e acompanhamento de demandas.
+                </p>
+                <p class="item-tech">Tecnologias: React, SpringBoot, MariaDB, Gestão de Serviços</p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <h4 class="item-title">CountBus</h4>
+                    <span class="item-date">Estágio / Equipe</span>
+                </div>
+                <p class="item-desc">
+                    Sistema de tecnologia voltado ao monitoramento da ocupação de ônibus. Iniciou como protótipo acadêmico e evoluiu para uma solução completa abrangendo hardware, sensores, GPS, conectividade, backend, banco de dados e dashboard web para visualização dos dados.
+                </p>
+                <p class="item-tech">Tecnologias: ESP32, GPS, Sensores, Spring Boot, MariaDB, React</p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <h4 class="item-title">Projeto SENAI IA</h4>
+                    <span class="item-date">Estudo</span>
+                </div>
+                <p class="item-desc">
+                    Projeto prático desenvolvido durante os estudos em Inteligência Artificial no SENAI, focado em explorar aplicações reais e realizar integração com APIs de IA para automatizar tarefas e gerar conteúdo inteligente.
+                </p>
+                <p class="item-tech">Tecnologias: JavaScript, Node.js, APIs, Inteligência Artificial</p>
+            </div>
+
+            
+        </section>
+
+
+        <!-- Extracurricular -->
+        <section class="section">
+            <h3 class="section-title">Atividades Extracurriculares</h3>
+            <p class="item-desc">
+                • Participação em eventos de capacitação e empregabilidade (ExpoCIEE).<br>
+                • Engajamento em competições técnicas (InterFatecs e RoboCode).<br>
+                • Desenvolvimento de pitches para apresentação de projetos.
+            </p>
+        </section>
+
+    </div>
+
+</body>
+</html>
