@@ -40,58 +40,67 @@
 
         /* Header Section */
         .header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            /* border-bottom: 2px solid var(--border-color); */
+            padding-bottom: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-image-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 0.85rem;
             text-align: center;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1.75rem;
-            margin-bottom: 2rem;
+            border: 3px solid var(--border-color);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .profile-image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .header-content {
-            width: 100%;
+            flex-grow: 1;
         }
 
         .name {
-            font-size: 2.1rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--primary-color);
             line-height: 1.2;
-            margin-bottom: 0.4rem;
-            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
         }
 
         .role {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--secondary-color);
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .contact-info {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.875rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
-        .contact-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem 0.5rem;
-        }
-
         .contact-item {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 0.3rem;
-        }
-
-        .contact-item strong {
-            color: var(--primary-color);
-            font-weight: 600;
         }
 
         .contact-item a {
@@ -102,13 +111,6 @@
 
         .contact-item a:hover {
             color: var(--secondary-color);
-        }
-
-        .contact-separator {
-            color: var(--secondary-color);
-            font-weight: bold;
-            opacity: 0.7;
-            user-select: none;
         }
 
         /* Sections */
@@ -238,32 +240,29 @@
     <div class="resume-container">
         <!-- Header -->
         <header class="header">
+            <div class="profile-image-placeholder">
+                <img src="ftcurriculo.png" alt="Foto Guilherme Bezerra de Jesus">
+            </div>
+            
             <div class="header-content">
                 <h1 class="name">Guilherme Bezerra de Jesus</h1>
                 <h2 class="role">Desenvolvedor de Software | Front-end • Back-end • IA</h2>
                 
                 <div class="contact-info">
-                    <div class="contact-row">
-                        <div class="contact-item">
-                            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/guilherme-b-b3905229b/" target="_blank">linkedin.com/in/guilherme-b</a>
-                        </div>
-                        <span class="contact-separator">•</span>
-                        <div class="contact-item">
-                            <strong>GitHub:</strong> <a href="https://github.com/GuiBez007" target="_blank">github.com/GuiBez007</a>
-                        </div>
-                        <span class="contact-separator">•</span>
-                        <div class="contact-item">
-                            <strong>WhatsApp:</strong> <a href="https://wa.me/5511917652794" target="_blank">(11) 91765-2794</a>
-                        </div>
+                    <div class="contact-item">
+                        <strong>E-mail:</strong> <a href="mailto:guilhermebezerradejesus@gmail.com">guilhermebezerradejesus@gmail.com</a>
                     </div>
-                    <div class="contact-row">
-                        <div class="contact-item">
-                            <strong>E-mail:</strong> <a href="mailto:guilhermebezerradejesus@gmail.com">guilhermebezerradejesus@gmail.com</a>
-                        </div>
-                        <span class="contact-separator">•</span>
-                        <div class="contact-item">
-                            <strong>Endereço:</strong> <span>Santana de Parnaíba, SP - 06514220</span>
-                        </div>
+                    <div class="contact-item">
+                        <strong>WhatsApp:</strong> <a href="https://wa.me/5511917652794" target="_blank">(11) 91765-2794</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/guilherme-b-b3905229b/" target="_blank">linkedin.com/in/guilherme-b</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>GitHub:</strong> <a href="https://github.com/GuiBez007" target="_blank">github.com/GuiBez007</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Localidade:</strong> <span>Santana de Parnaíba, São Paulo - SP</span> <!-- Substitua pela sua cidade -->
                     </div>
                 </div>
             </div>
@@ -277,7 +276,7 @@
             </p>
             <br>
             <p>
-                Busco oportunidade em desenvolvimento de software para atuar com front-end, back-end ou IA e continuar evoluindo tecnicamente. Aberto a novas experiências na área de TI.
+                Busco oportunidade em desenvolvimento de software para atuar com front-end, back-end ou IA e continuar evoluindo tecnicamente.
             </p>
         </section>
 
@@ -349,12 +348,12 @@
 
             <div class="item">
                 <div class="item-header">
-                    <h4 class="item-title">Cursos de Tecnologia da Cisco</h4>
+                    <h4 class="item-title">Cursos da Cisco</h4>
                     <span class="item-date"></span>
                 </div>
                 <div class="item-subtitle">Cisco Networking Academy</div>
                 <p class="item-desc">
-                    Cursos com foco em tecnologias e ferramentas relevantes para a área tecnológica, tais como Programação em Python, IT Essentials, Sistemas Operacionais Básico e Segurança de Endpoint.
+                    Cursos com foco em tecnologias e ferramentas relevantes para a área de tecnologia, tais como Programação em Python, IT Essentials, Sistemas Operacionais Básico e Segurança de Endpoint.
                 </p>
             </div>
 
