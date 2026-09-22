@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { personalData } from '../data/content';
 import profileImg from '../assets/ftperfil.png';
-import curriculoPdf from '../assets/curriculo_GBJ.pdf';
+import curriculoPdf from '../assets/Curriculo_Guilherme_Bezerra.pdf';
 
 function Hero() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
