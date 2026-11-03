@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Currículo PDF</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #eef2f6;
+      color: #333;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 960px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.6rem;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .drop-zone {
+      border: 2px dashed #4361ee;
+      border-radius: 10px;
+      padding: 30px 20px;
+      text-align: center;
+      background-color: #f8f9ff;
+      cursor: pointer;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .drop-zone.dragover {
+      background-color: #e8ecff;
+      border-color: #2b44c6;
+    }
+
+    .drop-zone svg {
+      width: 44px;
+      height: 44px;
+      fill: #4361ee;
+      margin-bottom: 8px;
+    }
+
+    .drop-zone p {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .drop-zone span {
+      font-size: 0.85rem;
+      color: #777;
+      display: block;
+      margin-top: 4px;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    .actions-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 4px;
+    }
+
+    .file-status {
+      font-size: 0.95rem;
+      color: #444;
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      border: none;
+      padding: 11px 22px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s, opacity 0.2s;
+    }
+
+    .btn-primary {
+      background-color: #2ec4b6;
+      color: #ffffff;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background-color: #20a396;
+    }
+
+    .btn-primary:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .tip-box {
+      background-color: #f0f7ff;
+      border-left: 4px solid #3b82f6;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #1e40af;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .preview-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .preview-header {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #444;
+    }
+
+    /* Iframe isola completamente estilos, tags de folha (A4, @page, media print) e scripts */
+    .preview-frame {
+      width: 100%;
+      height: 650px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Gerador de Currículo (HTML &rarr; PDF)</h1>
+      <p>Preserva 100% da diagramação, CSS e paginação exata do documento original.</p>
+    </header>
+
+    <!-- Área de Drop/Upload -->
+    <div class="drop-zone" id="dropZone">
+      <svg viewBox="0 0 24 24">
+        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+      </svg>
+      <p>Arraste e solte seu arquivo <strong>.html</strong> aqui</p>
+      <span>ou clique para buscar nos diretórios</span>
+      <input type="file" id="fileInput" accept=".html,.htm">
+    </div>
+
+    <!-- Barra de Controles -->
+    <div class="actions-bar">
+      <span class="file-status" id="fileStatus">Nenhum arquivo selecionado</span>
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btnGenerate" disabled>Gerar PDF / Salvar como PDF</button>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Dica:</strong> Na caixa de diálogo que abrir, certifique-se de que o Destino seja <em>"Salvar como PDF"</em> (ou <em>"Microsoft Print to PDF"</em>). As configurações originais de cores, margens e fontes serão mantidas com fidelidade vetorial absoluta.
+    </div>
+
+    <!-- Visualização isolada -->
+    <div class="preview-section">
+      <div class="preview-header">Visualização do Documento:</div>
+      <iframe id="previewFrame" class="preview-frame" title="Visualização do Currículo"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const fileStatus = document.getElementById('fileStatus');
+    const btnGenerate = document.getElementById('btnGenerate');
+    const previewFrame = document.getElementById('previewFrame');
+
+    let loadedHtml = null;
+
+    // Dispara input ao clicar
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    // Drag and drop
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+
+    ['dragleave', 'dragend'].forEach(evt => {
+      dropZone.addEventListener(evt, () => dropZone.classList.remove('dragover'));
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) {
+        handleFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) {
+        handleFile(e.target.files[0]);
+      }
+    });
+
+    function handleFile(file) {
+      if (!file.name.match(/\.(html|htm)$/i)) {
+        alert("Por favor, selecione um arquivo válido com extensão .html ou .htm");
+        return;
+      }
+
+      fileStatus.textContent = `Arquivo carregado: ${file.name}`;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        loadedHtml = e.target.result;
+
+        // Renderiza no iframe isolado (preservando completamente head, styles, layouts e media queries)
+        const frameDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+        frameDoc.open();
+        frameDoc.write(loadedHtml);
+        frameDoc.close();
+
+        btnGenerate.disabled = false;
+      };
+      reader.readAsText(file);
+    }
+
+    // Geração do PDF preservando 100% da estrutura nativa do navegador
+    btnGenerate.addEventListener('click', () => {
+      if (!loadedHtml) return;
+
+      const frameWindow = previewFrame.contentWindow;
+      frameWindow.focus();
+      frameWindow.print();
+    });
+  </script>
+</body>
+</html>
